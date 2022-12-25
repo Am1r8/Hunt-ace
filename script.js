@@ -103,3 +103,25 @@ function calculateScoreToAdd(roundNum) {
         return 10
     }
 }
+
+
+function calculateScore() {
+    const scoreToAdd = calculateScoreToAdd(roundNum)
+    score = score + scoreToAdd
+}
+
+function updateScore() {
+    calculateScore()
+    updateStatusElement(scoreElem, "block", primaryColor, `Score <span class='badge'>${score}</span>`)
+
+}
+
+function updateStatusElement(elem, display, color, innerHTML) {
+    elem.style.display = display
+
+    if (arguments.length > 2) {
+        elem.style.color = color
+        elem.innerHTML = innerHTML
+    }
+
+}
