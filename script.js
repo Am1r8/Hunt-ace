@@ -71,3 +71,22 @@ function endRound() {
         }
     }, 3000)
 }
+
+
+function chooseCard(card) {
+    if (canChooseCard()) {
+        evaluateCardChoice(card)
+        saveGameObjectToLocalStorage(score, roundNum)
+        flipCard(card, false)
+
+        setTimeout(() => {
+            flipCards(false)
+            updateStatusElement(currentGameStatusElem, "block", primaryColor, "Card positions revealed")
+
+            endRound()
+
+        }, 3000)
+        cardsRevealed = true
+    }
+
+}
