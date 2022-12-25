@@ -162,3 +162,22 @@ function loadGame() {
     updateStatusElement(roundContainerElem, "none")
 
 }
+
+
+function checkForIncompleteGame() {
+    const serializedGameObj = getLocalStorageItemValue(localStorageGameKey)
+    if (serializedGameObj) {
+        gameObj = getObjectFromJSON(serializedGameObj)
+
+        if (gameObj.round >= maxRounds) {
+            removeLocalStorageItem(localStorageGameKey)
+        } else {
+            if (confirm('Would you like to continue with your last game?')) {
+                score = gameObj.score
+                roundNum = gameObj.round
+            }
+        }
+
+    }
+
+}
