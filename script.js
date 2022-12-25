@@ -44,3 +44,18 @@ let score = 0
 let gameObj = {}
 
 const localStorageGameKey = "HTA"
+
+loadGame()
+
+
+function gameOver() {
+    updateStatusElement(scoreContainerElem, "none")
+    updateStatusElement(roundContainerElem, "none")
+
+    const gameOverMessage = `Game Over! Final Score - <span class = 'badge'>${score}</span> Click 'Play Game' button to play again`
+
+    updateStatusElement(currentGameStatusElem, "block", primaryColor, gameOverMessage)
+
+    gameInProgress = false
+    playGameButtonElem.disabled = false
+}
