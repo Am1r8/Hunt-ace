@@ -125,3 +125,25 @@ function updateStatusElement(elem, display, color, innerHTML) {
     }
 
 }
+
+
+function outputChoiceFeedBack(hit) {
+    if (hit) {
+        updateStatusElement(currentGameStatusElem, "block", winColor, "Hit!! - Well Done!! :)")
+    } else {
+        updateStatusElement(currentGameStatusElem, "block", loseColor, "Missed!! :(")
+    }
+}
+
+function evaluateCardChoice(card) {
+    if (card.id == aceId) {
+        updateScore()
+        outputChoiceFeedBack(true)
+    } else {
+        outputChoiceFeedBack(false)
+    }
+}
+
+function canChooseCard() {
+    return gameInProgress == true && !shufflingInProgress && !cardsRevealed
+}
