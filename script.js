@@ -147,3 +147,18 @@ function evaluateCardChoice(card) {
 function canChooseCard() {
     return gameInProgress == true && !shufflingInProgress && !cardsRevealed
 }
+
+
+function loadGame() {
+    createCards()
+
+    cards = document.querySelectorAll('.card')
+
+    cardFlyInEffect()
+
+    playGameButtonElem.addEventListener('click', () => startGame())
+
+    updateStatusElement(scoreContainerElem, "none")
+    updateStatusElement(roundContainerElem, "none")
+
+}
