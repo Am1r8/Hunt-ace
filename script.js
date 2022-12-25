@@ -181,3 +181,48 @@ function checkForIncompleteGame() {
     }
 
 }
+
+
+function startGame() {
+    initializeNewGame()
+    startRound()
+
+}
+
+function initializeNewGame() {
+    score = 0
+    roundNum = 0
+
+    checkForIncompleteGame()
+
+    shufflingInProgress = false
+
+    updateStatusElement(scoreContainerElem, "flex")
+    updateStatusElement(roundContainerElem, "flex")
+
+    updateStatusElement(scoreElem, "block", primaryColor, `Score <span class='badge'>${score}</span>`)
+    updateStatusElement(roundElem, "block", primaryColor, `Round <span class='badge'>${roundNum}</span>`)
+
+}
+
+function startRound() {
+    initializeNewRound()
+    collectCards()
+    flipCards(true)
+    shuffleCards()
+
+}
+
+function initializeNewRound() {
+    roundNum++
+    playGameButtonElem.disabled = true
+
+    gameInProgress = true
+    shufflingInProgress = true
+    cardsRevealed = false
+
+    updateStatusElement(currentGameStatusElem, "block", primaryColor, "Shuffling...")
+
+    updateStatusElement(roundElem, "block", primaryColor, `Round <span class='badge'>${roundNum}</span>`)
+
+}
