@@ -59,3 +59,15 @@ function gameOver() {
     gameInProgress = false
     playGameButtonElem.disabled = false
 }
+
+
+function endRound() {
+    setTimeout(() => {
+        if (roundNum == maxRounds) {
+            gameOver()
+            return
+        } else {
+            startRound()
+        }
+    }, 3000)
+}
